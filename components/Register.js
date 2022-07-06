@@ -36,28 +36,46 @@ const Register = () => {
     }
 
 
-
     return(
         <div>
-            <div>
-                <label>Name</label>
-                <input type="text" value={name} onChange={onChangeName}></input>
-            </div>
+            <div className="row">
+            <div className="col"></div>
+            <div className="col">
+                <div className="card mt-5">
+                        <h5 className="card-title text-center">Register</h5>
+                        <div className="mb-3">
+                            <label htmlFor="text">Name</label>
+                            <input type="text" 
+                            className="form-control"
+                            value={name} 
+                            onChange={onChangeName}/>
+                        </div>
 
-            <div>
-                <label>Email</label>
-                <input type="text" value={email} onChange={onChangeEmail}></input>
-            </div>
+                        <div className="mb-3">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" 
+                            className="form-control"
+                            value={email} 
+                            onChange={onChangeEmail}/>
+                        </div>
+                        
+                        <div className="mb-3">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" 
+                            className="form-control"
+                            value={password} 
+                            onChange={onChangePassword}/>
+                        </div>
+                        
+                            <button disabled={!email || !password || !name}
+                            onClick={handleRegister}
+                            className="btn btn-primary form-control" >
+                            Register
+                            </button>
 
-            <div>
-                <label>Password</label>
-                <input type="password" value={password} onChange={onChangePassword}></input>
-            </div>
-
-            <div>
-                <button disabled={!email || !password || !name}
-                onClick={handleRegister} >
-                    Register</button>
+                    </div>
+                </div>
+                <div className="col"></div>
             </div>
         </div>
     );

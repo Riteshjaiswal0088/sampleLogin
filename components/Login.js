@@ -12,12 +12,12 @@ const Login = () => {
         setPassword(event.target.value);
     };
 
-    const handleLogin = (event) => {
-        const userString = localStorage.getItem("users");
+    const handleLogin = () => {
+        const usersString = localStorage.getItem("users");
         let users = [];
 
-        if (userString) {
-            users = JSON.parse(userString);
+        if (usersString) {
+            users = JSON.parse(usersString);
         }
         console.log("users:", users);
 
@@ -31,20 +31,34 @@ const Login = () => {
         
     return(
         <div>
-            <div>
-                <label>Email</label>
-                <input type="email" value={email} onChange={handleEmailChange}></input>
+            <div className="row">
+                <div className="col"></div>
+                <div className="col">
+                    <div className="card mt-5">
+                        <h5 className="card-title text-center">Login</h5>  
+                        <div className="mb-3">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" 
+                            className="form-control"
+                            value={email} 
+                            onChange={handleEmailChange}/>
+                        </div>
+                        
+                        <div className="mb-3">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" 
+                            className="form-control"
+                            value={password} 
+                            onChange={handlePasswordChange}/>
+                        </div>
+                        
+                        <button disabled={ !email || !password } onClick={handleLogin} 
+                        className="btn btn-primary form-control">Login</button>
+                    </div>
+                </div>
+                <div className="col"></div>
             </div>
-
-            <div>
-                <label>Passwords</label>
-                <input type="password" value={password} onChange={handlePasswordChange}></input>
-            </div>
-
-            <div>
-                <button disabled={ !email || !password } onClick={handleLogin}>Login</button>
-            </div>
-        </div>
+        </div> 
     );
 };
 export default Login;
